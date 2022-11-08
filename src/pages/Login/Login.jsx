@@ -1,3 +1,4 @@
+import { Button, Card, Label, TextInput } from 'flowbite-react';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -30,7 +31,7 @@ const Login = () => {
         //     .catch(error => toast.error(error.message));
         reset();
     };
-    
+
 
     //Reset Pass
     const handleReset = () => {
@@ -43,23 +44,22 @@ const Login = () => {
     }
 
     return (
-
-        <div className="p-4 w-full min-h-screen flex justify-center items-center bg-white rounded-lg  sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-
-            <div className="p-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" >
-
-                    <h5 className="text-xl font-medium text-gray-900 dark:text-white">Sign in to Life Advice</h5>
+        <div className="w-full min-h-screen flex justify-center items-center">
+            <Card className="max-w-sm  w-full">
+                <h1 className='text-2xl text-center font-semibold'>Sign Up</h1>
+                <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
                     <div>
-                        <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
-                        <input
+                        <div className="mb-2 block">
+                            <Label
+                                htmlFor="email1"
+                                value="Your email"
+                            />
+                        </div>
+                        <TextInput
                             type="email"
-                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                            placeholder='Your Email'
-                            defaultValue={''}
+                            placeholder="name@flowbite.com"
                             {...register("email",
                                 {
-                                    onChange: (event) => { setUserEmail(event.target.value) },
                                     required: "Email Address is required",
                                     pattern: {
                                         value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
@@ -72,26 +72,33 @@ const Login = () => {
                     {errors.email?.type === 'required' && <p role="alert">{errors.email?.message}</p>}
                     {errors.email?.type === 'pattern' && <p role="alert">{errors.email?.message}</p>}
                     <div>
-                        <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
-                        <input
+                        <div className="mb-2 block">
+                            <Label
+                                htmlFor="password1"
+                                value="Your password"
+                            />
+                        </div>
+                        <TextInput
+                            id="password1"
                             type="password"
-                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                            placeholder='Enter Password'
-                            {...register("password", {
-                                required: "Password is required",
-                                minLength: {
-                                    value: 6,
-                                    message: "Must be 6 charecters or longer",
+                            {...register("password",
+                                {
+                                    required: "Password is required",
+                                    minLength: {
+                                        value: 6,
+                                        message: "Must be 6 charecters or longer",
+                                    }
                                 }
-                            }
                             )}
                         />
                     </div>
+
                     {errors.password?.type === 'required' && <p role="alert">{errors.password?.message}</p>}
                     {errors.password?.type === 'minLength' && <p role="alert">{errors.password?.message}</p>}
-                    <div className='text-center'>
-                        <input type="submit" className=' p-2 mx-auto bg-black text-white rounded-md' value="Login" />
-                    </div>
+
+                    <Button type="submit">
+                        Sign Up
+                    </Button>
                 </form>
                 <div className='space-y-1'>
                     <button
@@ -101,11 +108,9 @@ const Login = () => {
                         Forgot password?
                     </button>
                 </div>
-                <p className='text-xs'>New to Life Advice? <Link to="/sign-up" className=' text-secondary cursor-pointer'>Create new account</Link></p>
-            </div>
-
+                <p className='text-xs'>New to Life Advice? <Link to="/sign-up" className='text-lime-700 cursor-pointer'>Create new account</Link></p>
+            </Card>
         </div>
-
     );
 };
 
