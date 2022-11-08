@@ -67,8 +67,8 @@ const Header = () => {
                 <Navbar.Link href="/navbars">
                     Pricing
                 </Navbar.Link>
-                <Navbar.Link href="/navbars">
-                    Contact
+                <Navbar.Link href="/login">
+                    Login
                 </Navbar.Link>
             </Navbar.Collapse>
         </Navbar>
