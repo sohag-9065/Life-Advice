@@ -13,7 +13,7 @@ const Login = () => {
     const navigate = useNavigate()
     const location = useLocation()
 
-    const from = location.state?.from?.pathname || '/'
+    const from = location.state?.from?.pathname || '/home'
 
     if (loadingUser) {
         return <Loading></Loading>
@@ -23,12 +23,12 @@ const Login = () => {
         const { email, password } = data;
         console.log(email, password)
         // sign in user with email and pass 
-        // signin(email, password)
-        //     .then(result => {
-        //         toast.success('Login Success!', { autoClose: 1000 });
-        //         navigate(from, { replace: true });
-        //     })
-        //     .catch(error => toast.error(error.message));
+        signin(email, password)
+            .then(result => {
+                toast.success('Login Success!', { autoClose: 1000 });
+                navigate(from, { replace: true });
+            })
+            .catch(error => toast.error(error.message));
         reset();
     };
 
@@ -56,10 +56,12 @@ const Login = () => {
                             />
                         </div>
                         <TextInput
+                        
                             type="email"
-                            placeholder="name@flowbite.com"
+                            placeholder="name@lifeadvice.com"
                             {...register("email",
                                 {
+                                    onChange: (event) => { setUserEmail(event.target.value) },
                                     required: "Email Address is required",
                                     pattern: {
                                         value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,

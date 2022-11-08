@@ -6,7 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Loading from '../../components/Loading';
 import { AuthContext } from '../../Context/UserContext';
-// import imageUpload from '../../js/imageUpload';
+import imageUpload from '../../js/imageUpload';
 
 const SignUp = () => {
     const { createUser, updateNameImage, verifyEmail } = useContext(AuthContext);
@@ -24,45 +24,45 @@ const SignUp = () => {
 
     const onSubmit = data => {
         console.log(data);
-        // const { name, email, password } = data;
-        // const image = data.image[0];
-        // setLoadingUser(true)
+        const { name, email, password } = data;
+        const image = data.image[0];
+        setLoadingUser(true)
         // 1.Create User 
-        // createUser(email, password)
-        //     .then(() => {
-        //         //2. Image link Link create 
-        //         imageUpload(image)
-        //             .then(res => res.json())
-        //             .then(result => {
-        //                 if (result.success) {
-        //                     const img = result.data.url
-        //                     //3. Update Name
-        //                     updateNameImage(name, img)
-        //                         .then(() => {
-        //                             toast.success('Name And Img Updated', { autoClose: 1000 })
-        //                             //4. Email verification
-        //                             verifyEmail()
-        //                                 .then(() => {
-        //                                     toast.success('Please check your email for verification link', { autoClose: 1000 })
-        //                                     setLoadingUser(false);
-        //                                     navigate(from, { replace: true })
-        //                                 })
-        //                                 .catch(error => {
-        //                                     setLoadingUser(false);
-        //                                     toast.error(error.message)
-        //                                 })
-        //                         })
-        //                         .catch(error => {
-        //                             toast.error(error.message)
-        //                         })
-        //                 }
-        //             })
+        createUser(email, password)
+            .then(() => {
+                //2. Image link Link create 
+                imageUpload(image)
+                    .then(res => res.json())
+                    .then(result => {
+                        if (result.success) {
+                            const img = result.data.url
+                            //3. Update Name
+                            updateNameImage(name, img)
+                                .then(() => {
+                                    toast.success('Name And Img Updated', { autoClose: 1000 })
+                                    //4. Email verification
+                                    verifyEmail()
+                                        .then(() => {
+                                            toast.success('Please check your email for verification link', { autoClose: 1000 })
+                                            setLoadingUser(false);
+                                            navigate(from, { replace: true })
+                                        })
+                                        .catch(error => {
+                                            setLoadingUser(false);
+                                            toast.error(error.message)
+                                        })
+                                })
+                                .catch(error => {
+                                    toast.error(error.message)
+                                })
+                        }
+                    })
 
-        //     })
-        //     .catch(error => {
-        //         toast.error(error);
-        //         setLoadingUser(false);
-        //     });
+            })
+            .catch(error => {
+                toast.error(error);
+                setLoadingUser(false);
+            });
         reset();
     };
     return (
@@ -115,7 +115,7 @@ const SignUp = () => {
                         </div>
                         <TextInput
                             type="email"
-                            placeholder="name@flowbite.com"
+                            placeholder="name@lifeadvice.com"
                             {...register("email",
                                 {
                                     required: "Email Address is required",
