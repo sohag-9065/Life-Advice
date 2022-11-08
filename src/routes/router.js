@@ -8,50 +8,63 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/Login/SignUp";
 import MyReview from "../pages/MyReview/MyReview";
+import ServiceDetails from "../pages/ServiceDetails/ServiceDetails";
 import Services from "../pages/Services/Services";
+import ProtectRoute from "./ProtectRoute";
 
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Main/>,
-        errorElement: <ErrorPage/>,
+        element: <Main />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: "/",
-                element: <Home/>
+                element: <Home />
             },
             {
                 path: "/home",
-                element: <Home/>
+                element: <Home />
             },
             {
                 path: "/services",
-                element: <Services/>
+                element: <Services />
+            },
+            {
+                path: "/services/:id",
+                element: <ServiceDetails/>
             },
             {
                 path: "/blog",
-                element: <Blog/>
+                element: <Blog />
             },
             {
                 path: "/faq",
-                element: <Faq/>
+                element: <Faq />
             },
             {
                 path: "/my-review",
-                element: <MyReview/>
+                element:
+                    <ProtectRoute>
+                        <MyReview />
+                    </ProtectRoute>
             },
             {
                 path: "/add-service",
-                element: <AddAService/>
+                element:
+                    <ProtectRoute>
+                        <AddAService />
+                    </ProtectRoute>
+
             },
             {
                 path: "/login",
-                element: <Login/>
+                element: <Login />
             },
             {
                 path: "/sign-up",
-                element: <SignUp/>
+                element: <SignUp />
             }
         ]
     }
