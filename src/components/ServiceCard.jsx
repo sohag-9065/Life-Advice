@@ -1,18 +1,29 @@
 import { Card, Rating } from 'flowbite-react';
 import React from 'react';
 import { FaArrowRight } from "react-icons/fa";
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link } from 'react-router-dom';
 import ReviewRating from './ReviewRating';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const ServiceCard = ({ service }) => {
     const { _id, title, description, price, rating, image } = service;
     // console.log(service);
     return (
         <div className="max-w-sm  ">
+
+
             <Card
                 imgAlt="Meaningful alt text for an image that is not purely decorative"
-                imgSrc={image}
+                 
             >
+                <PhotoProvider>
+                    <div className="foo">
+                        <PhotoView src={image}>
+                            <img src={image} alt="" />
+                        </PhotoView>
+                    </div>
+                </PhotoProvider>
                 <h5 className="text-2xl font-bold font-serif tracking-tight text-gray-900 dark:text-white">
                     {title}
                 </h5>
@@ -20,7 +31,7 @@ const ServiceCard = ({ service }) => {
                     {description.slice(0, 100)}... <Link to={`/services/${_id}`} className='text-sm font-semibold border-2 px-1 ' >see more</Link>
                 </p>
                 <ReviewRating rating={rating}></ReviewRating>
-                
+
                 <div className="flex items-center justify-between">
                     <span className="text-3xl font-bold text-gray-900 dark:text-white">
                         {price}
@@ -30,11 +41,13 @@ const ServiceCard = ({ service }) => {
                     >
                         <Link
                             to={`/services/${_id}`}
+                            className="flex justify-center items-center gap-4"
                         >
                             Show Details
+                            <FaArrowRight />
 
                         </Link>
-                        <FaArrowRight />
+                        
 
                     </div>
 

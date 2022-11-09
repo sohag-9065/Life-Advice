@@ -16,10 +16,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <UserContext>
-      <QueryClientProvider client={queryClient}>
-        <ToastContainer position='top-center' />
-        <App />
-      </QueryClientProvider>
+        <QueryClientProvider client={queryClient}>
+          <ToastContainer position='top-center' />
+          <App />
+        </QueryClientProvider>
     </UserContext>
   </React.StrictMode>
 );

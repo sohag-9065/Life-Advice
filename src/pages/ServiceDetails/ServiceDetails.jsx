@@ -1,29 +1,39 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { useQuery } from 'react-query';
 import { Link, useLoaderData } from 'react-router-dom';
 import Loading from '../../components/Loading';
 import PrimaryButton from '../../components/PrimaryButton';
 import ReviewCard from '../../components/ReviewCard';
 import ReviewRating from '../../components/ReviewRating';
+import { AuthContext } from '../../Context/UserContext';
 import AddReview from './AddReview';
 
 const ServiceDetails = () => {
+    const { user, loadingUser } = useContext(AuthContext);
     const { _id, title, details, description, image, rating, price } = useLoaderData();
-    console.log(_id);
 
     const { data: reviews, isLoading, refetch } = useQuery('reviews', () => fetch(`http://localhost:5000/reviews/filter?id=${_id}`).then(res => res.json()),);
 
-    if (isLoading) {
+    if (isLoading || loadingUser) {
         return <Loading></Loading>
     }
 
-    console.log(reviews)
+   
+    // console.log(reviews)
     return (
         <div>
             <div className='my-12'>
                 <div className="card max-w-4xl mx-auto bg-base-100 mb-4 shadow-xl pt-4 dark:bg-gray-800 dark:text-gray-100">
                     <div  >
-                        <figure><img src={image} alt="Shoes" className='w-full ' /></figure>
+                        <PhotoProvider>
+                            <div className="foo">
+                                <PhotoView src={image}>
+                                    <img src={image} alt="" />
+                                </PhotoView>
+                            </div>
+                        </PhotoProvider>
+                        {/* <figure><img src={image} alt="Shoes" className='w-full ' /></figure> */}
                         <div className="card-body text-black px-8 ">
                             <div className="">
                                 <h2 className="card-title py-4 font-serif">
@@ -54,20 +64,35 @@ const ServiceDetails = () => {
                     </div>
                 </div>
             </div>
-            <div className='grid grid-cols-1 lg:grid-cols-3 justify-items-center'>
-                {
-                    reviews.map(review => <ReviewCard
-                    key={review._id}
-                    singleReview={review}
-                    ></ReviewCard>)
-                }
-                
+            <div className='my-20'>
+                <h2 className="text-center  py-4 font-serif text-green-400 text-4xl font-semibold ">
+                     What Our Students Say 
+                </h2>
+                <div className='grid grid-cols-1 lg:grid-cols-3 justify-items-center'>
+                    {
+                        reviews.map(review => <ReviewCard
+                            key={review._id}
+                            singleReview={review}
+                        ></ReviewCard>)
+                    }
+
+                </div>
             </div>
-            <AddReview 
-            id={_id} 
-            title={title}
-            refetch={refetch}
-            ></AddReview>
+            {
+                user ?
+                    <AddReview
+                        id={_id}
+                        title={title}
+                        refetch={refetch}
+                    ></AddReview>
+                    :
+                    <div className='my-12 flex justify-center'>
+                        {/* <Link to="/login" className='  py-3  px-40  border-2  '>Please login to add a review.</Link> */}
+                        <Link  to="/login"><PrimaryButton>Please login to add a review.</PrimaryButton></Link>
+                    </div>
+
+            }
+
         </div>
     );
 };

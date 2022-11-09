@@ -1,10 +1,11 @@
-import { Button, Card, Label, TextInput } from 'flowbite-react';
+import { Button, Card, Dropdown, Label, TextInput } from 'flowbite-react';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Loading from '../../components/Loading';
 import { AuthContext } from '../../Context/UserContext';
+import SocialLogin from './SocialLogin';
 
 const Login = () => {
     const [userEmail, setUserEmail] = useState('')
@@ -56,7 +57,7 @@ const Login = () => {
                             />
                         </div>
                         <TextInput
-                        
+
                             type="email"
                             placeholder="name@lifeadvice.com"
                             {...register("email",
@@ -111,6 +112,10 @@ const Login = () => {
                     </button>
                 </div>
                 <p className='text-xs'>New to Life Advice? <Link to="/sign-up" className='text-lime-700 cursor-pointer'>Create new account</Link></p>
+                <div className='mt-1'>
+                    <Dropdown.Divider />
+                </div>
+                <SocialLogin></SocialLogin>
             </Card>
         </div>
     );

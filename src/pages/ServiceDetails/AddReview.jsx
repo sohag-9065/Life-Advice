@@ -66,7 +66,7 @@ const AddReview = ({ id , title, refetch }) => {
 
                 <div className='mx-auto mt-4'>
                     <p className='pb-1'>Rating</p>
-                    <input name='rating' type="number" min="1" max="5" placeholder='Add Rating' className='w-full border-0 border-b border-gray-600 h-12 bg-slate-100 focus:ring-0 hover:border-2 hover:border-black focus:border-black' required />
+                    <input name='rating' type="number" min="1" max="5" placeholder='Add Rating Out of 5' className='w-full border-0 border-b border-gray-600 h-12 bg-slate-100 focus:ring-0 hover:border-2 hover:border-black focus:border-black' required />
                 </div>
 
 

@@ -5,7 +5,7 @@ import ReviewRating from './ReviewRating';
 
 const ReviewCard = ({ singleReview }) => {
     const { title, photoURL, email, user, rating, review } = singleReview;
-    console.log(singleReview);
+    // console.log(singleReview);
     return (
         <div className=" shadow  min-h-[200px] min-w-[300px] p-6   rounded-3xl">
             <div className='flex  items-center gap-6'>
