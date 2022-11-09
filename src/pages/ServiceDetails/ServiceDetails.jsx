@@ -7,11 +7,13 @@ import PrimaryButton from '../../components/PrimaryButton';
 import ReviewCard from '../../components/ReviewCard';
 import ReviewRating from '../../components/ReviewRating';
 import { AuthContext } from '../../Context/UserContext';
+import useTitle from '../../hooks/useTitle';
 import AddReview from './AddReview';
 
 const ServiceDetails = () => {
     const { user, loadingUser } = useContext(AuthContext);
     const { _id, title, details, description, image, rating, price } = useLoaderData();
+    useTitle("ServiceDetails");
 
     const { data: reviews, isLoading, refetch } = useQuery('reviews', () => fetch(`http://localhost:5000/reviews/filter?id=${_id}`).then(res => res.json()),);
 

@@ -2,10 +2,12 @@ import { Button, Card, Label, Textarea, TextInput } from 'flowbite-react';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import useTitle from '../../hooks/useTitle';
 import imageUpload from '../../js/imageUpload';
 
 const AddAService = () => {
     const { register, formState: { errors }, reset, handleSubmit } = useForm();
+    useTitle("Add Course")
     
 
     const onSubmit = data => {

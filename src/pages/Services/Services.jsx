@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Pagination } from 'flowbite-react';
 import Loading from '../../components/Loading';
 import ServiceCard from '../../components/ServiceCard';
+import useTitle from '../../hooks/useTitle';
 
 const Services = () => {
     const [services, setServices] = useState([]);
@@ -9,6 +10,7 @@ const Services = () => {
     const [page, setPage] = useState(1);
     const [size, setSize] = useState(3);
     const [isLoading, satIsLoading] = useState(false);
+    useTitle("Services");
     
 
     useEffect(() => {

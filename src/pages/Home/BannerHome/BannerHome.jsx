@@ -1,10 +1,11 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 import SubmitButton from '../../../components/SubmitButton';
+import useTitle from '../../../hooks/useTitle';
 import './BannerHome.css'
 
 const BannerHome = () => {
-
+    useTitle("Home");
     const handleForn = (e) => {
         e.preventDefault();
         toast.success("Mail Sent Successfully", { autoClose: 1000 });

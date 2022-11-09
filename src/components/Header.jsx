@@ -23,7 +23,7 @@ const Header = () => {
     return (
 
         <Navbar fluid={true} rounded={true} className="py-12" >
-            <Navbar.Brand href="https://flowbite.com/">
+            <Navbar.Brand href="#">
                 <img
                     src={logo}
                     className="mr-3 h-6 sm:h-9"

@@ -6,10 +6,11 @@ import Loading from '../../components/Loading';
 import PrimaryButton from '../../components/PrimaryButton';
 import ReviewCard from '../../components/ReviewCard';
 import { AuthContext } from '../../Context/UserContext';
+import useTitle from '../../hooks/useTitle';
 import EditReview from './EditReview';
 
 const MyReview = () => {
-
+    useTitle("MyReview");
     const [deleteReview, setDeleteReview] = useState(false);
     const [showModal, setShowModal] = useState(false)
     const [editReview, setEditReview] = useState(false);

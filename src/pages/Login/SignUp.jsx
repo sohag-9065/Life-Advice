@@ -6,10 +6,12 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Loading from '../../components/Loading';
 import { AuthContext } from '../../Context/UserContext';
+import useTitle from '../../hooks/useTitle';
 import imageUpload from '../../js/imageUpload';
 
 const SignUp = () => {
     const { createUser, updateNameImage, verifyEmail } = useContext(AuthContext);
+    useTitle("SignUp");
     const { register, formState: { errors }, reset, handleSubmit } = useForm();
     const [loadingUser, setLoadingUser] = useState(false);
 

@@ -5,10 +5,12 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Loading from '../../components/Loading';
 import { AuthContext } from '../../Context/UserContext';
+import useTitle from '../../hooks/useTitle';
 import SocialLogin from './SocialLogin';
 
 const Login = () => {
-    const [userEmail, setUserEmail] = useState('')
+    const [userEmail, setUserEmail] = useState('');
+    useTitle("Login");
     const { register, formState: { errors }, reset, handleSubmit } = useForm();
     const { signin, resetPassword, loadingUser } = useContext(AuthContext)
     const navigate = useNavigate()
