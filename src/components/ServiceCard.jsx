@@ -2,32 +2,25 @@ import { Card, Rating } from 'flowbite-react';
 import React from 'react';
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import ReviewRating from './ReviewRating';
 
 const ServiceCard = ({ service }) => {
     const { _id, title, description, price, rating, image } = service;
+    // console.log(service);
     return (
         <div className="max-w-sm  ">
             <Card
                 imgAlt="Meaningful alt text for an image that is not purely decorative"
                 imgSrc={image}
             >
-                <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="text-2xl font-bold font-serif tracking-tight text-gray-900 dark:text-white">
                     {title}
                 </h5>
                 <p className="font-normal text-gray-700 dark:text-gray-400">
                     {description.slice(0, 100)}... <Link to={`/services/${_id}`} className='text-sm font-semibold border-2 px-1 ' >see more</Link>
                 </p>
-                <Rating>
-                    {
-                        [...Array(rating).keys()].map((rat, index) => <Rating.Star key={index} />)
-                    }
-                    {
-                        [...Array(5 - rating).keys()].map((rat, index) => <Rating.Star key={index} filled={false} />)
-                    }
-                    <span className="mr-2 ml-3 rounded bg-blue-100 px-2.5 py-0.5 text-xs font-semibold text-blue-800 dark:bg-blue-200 dark:text-blue-800">
-                        {rating}/5
-                    </span>
-                </Rating>
+                <ReviewRating rating={rating}></ReviewRating>
+                
                 <div className="flex items-center justify-between">
                     <span className="text-3xl font-bold text-gray-900 dark:text-white">
                         {price}

@@ -10,7 +10,7 @@ const ServicesHome = () => {
     if (isLoading) {
         return <Loading></Loading>
     }
-    const {services} = data;
+    const { services } = data;
     return (
         <div className='mt-12'>
             <h2 className='text-center text-4xl pt-2'>My Courses</h2>
@@ -24,17 +24,10 @@ const ServicesHome = () => {
                 }
             </div>
 
-            <div
-                className="flex justify-center items-center gap-4 my-12 rounded-lg bg-indigo-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-                <Link to='/services' >
-                    See All Courses
-                </Link>
+            <Link to='/services'  className="flex justify-center items-center gap-4 my-12 rounded-lg bg-yellow-400 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >
+                <p>See All Courses</p>
                 <FaArrowRight />
-
-            </div>
-
-           
+            </Link>
 
         </div>
 

@@ -29,15 +29,15 @@ const Services = () => {
 
 
     const pages = Math.ceil(count / 3);
-    console.log(services);
+    // console.log(services);
 
 
     const onChnagePage = (page) => {
         setPage(page);
-        console.log(page);
+        // console.log(page);
     }
     const handleChangePageSize = changeSize => {
-        console.log(changeSize);
+        // console.log(changeSize);
         setSize(changeSize);
         setPage(1);
     }

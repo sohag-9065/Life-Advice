@@ -92,7 +92,7 @@ const Header = () => {
                     Home
                 </NavLink>
                 <NavLink to="/services" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>
-                    Services
+                    Courses
                 </NavLink>
                 <NavLink to="/blog" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>
                     Blog
@@ -107,7 +107,7 @@ const Header = () => {
                         My reviews
                         </NavLink>
                         <NavLink to="/add-service" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>
-                        Add a service
+                        Add Course
                         </NavLink>
                     </>
 
