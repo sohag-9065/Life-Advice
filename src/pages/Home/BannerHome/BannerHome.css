@@ -1,0 +1,7 @@
+
+
+.bg-mulpleimage {
+    background-image: url('../../../assets/Banner/sohag.jpg'), url('../../../assets/Banner/cover_right_compressed.jpg');
+    background-position: left top, right top;
+    background-repeat: no-repeat, no-repeat;
+  }

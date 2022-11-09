@@ -37,7 +37,7 @@ const Services = () => {
 
     return (
         <div>
-            <h2 className='text-center text-4xl pt-2'>My All Services  </h2>
+            <h2 className='text-center text-4xl pt-2'>My All Courses  </h2>
             {/* all services show */}
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 max-w-screen-xl justify-items-center  mt-20'>
                 {

@@ -12,8 +12,8 @@ const ServicesHome = () => {
     }
     const {services} = data;
     return (
-        <div>
-            <h2 className='text-center text-4xl pt-2'>My Services</h2>
+        <div className='mt-12'>
+            <h2 className='text-center text-4xl pt-2'>My Courses</h2>
             {/* first three services show for Home route*/}
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 max-w-screen-xl justify-items-center  mt-20'>
                 {
