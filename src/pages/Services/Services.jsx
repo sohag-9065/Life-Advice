@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useQuery } from 'react-query';
 import { Pagination } from 'flowbite-react';
 import Loading from '../../components/Loading';
 import ServiceCard from '../../components/ServiceCard';
@@ -9,16 +8,24 @@ const Services = () => {
     const [count, setCount] = useState(0);
     const [page, setPage] = useState(1);
     const [size, setSize] = useState(3);
+    const [isLoading, satIsLoading] = useState(false);
+    
 
     useEffect(() => {
+        satIsLoading(true);
         fetch(`http://localhost:5000/services?page=${page - 1}&size=${size}`)
             .then(res => res.json())
             .then(data => {
                 setCount(data.count);
                 setServices(data.services);
+                satIsLoading(false);
 
             })
     }, [page, size]);
+
+    if(isLoading){
+        return  <Loading></Loading>
+    }
 
 
     const pages = Math.ceil(count / 3);
