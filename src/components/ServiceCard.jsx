@@ -1,4 +1,4 @@
-import { Card, Rating } from 'flowbite-react';
+import { Card } from 'flowbite-react';
 import React from 'react';
 import { FaArrowRight } from "react-icons/fa";
 import { PhotoProvider, PhotoView } from 'react-photo-view';

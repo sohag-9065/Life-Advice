@@ -19,7 +19,7 @@ const ServiceDetails = () => {
         return <Loading></Loading>
     }
 
-   
+
     // console.log(reviews)
     return (
         <div>
@@ -66,8 +66,14 @@ const ServiceDetails = () => {
             </div>
             <div className='my-20'>
                 <h2 className="text-center  py-4 font-serif text-green-400 text-4xl font-semibold ">
-                     What Our Students Say 
+                    What Our Students Say
                 </h2>
+                {
+                    reviews.length < 1 &&
+                    <div className='h-40 flex justify-center items-center'>
+                        <PrimaryButton>No Review Added Yet!</PrimaryButton>
+                    </div>
+                }
                 <div className='grid grid-cols-1 lg:grid-cols-3 justify-items-center'>
                     {
                         reviews.map(review => <ReviewCard
@@ -88,7 +94,7 @@ const ServiceDetails = () => {
                     :
                     <div className='my-12 flex justify-center'>
                         {/* <Link to="/login" className='  py-3  px-40  border-2  '>Please login to add a review.</Link> */}
-                        <Link  to="/login"><PrimaryButton>Please login to add a review.</PrimaryButton></Link>
+                        <Link to="/login"><PrimaryButton>Please login to add a review.</PrimaryButton></Link>
                     </div>
 
             }

@@ -56,29 +56,19 @@ const AddReview = ({ id , title, refetch }) => {
             <h5 className="w-80 mx-auto text-3xl  border-t-2 border-yellow-400 font-bold  pt-4  text-center ">
                 Add Review
             </h5>
-
             <form onSubmit={handleSubmit} className="my-12">
-
                 <div className='mx-auto mt-6'>
                     <p className='pb-1'>Review</p>
                     <textarea name='review' type="text" placeholder='Add a Review' className='w-full border-0 border-b border-gray-600 h-12 bg-slate-100 focus:ring-0 hover:border-2 hover:border-black focus:border-black' required />
                 </div>
-
                 <div className='mx-auto mt-4'>
                     <p className='pb-1'>Rating</p>
                     <input name='rating' type="number" min="1" max="5" placeholder='Add Rating Out of 5' className='w-full border-0 border-b border-gray-600 h-12 bg-slate-100 focus:ring-0 hover:border-2 hover:border-black focus:border-black' required />
                 </div>
-
-
                 <div className='flex justify-end mt-6'>
                     <SubmitButton value={"Submit"}></SubmitButton>
                 </div>
-
-
-
             </form>
-
-
         </div>
     );
 };

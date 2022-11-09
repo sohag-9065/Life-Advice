@@ -3,7 +3,7 @@ import React from 'react';
 import { FaUserAlt } from 'react-icons/fa';
 import ReviewRating from './ReviewRating';
 
-const ReviewCard = ({ singleReview }) => {
+const ReviewCard = ({ children, singleReview  }) => {
     const { title, photoURL, email, user, rating, review } = singleReview;
     // console.log(singleReview);
     return (
@@ -15,12 +15,9 @@ const ReviewCard = ({ singleReview }) => {
                         :
                         <FaUserAlt className='w-16 h-16 text-center' />
                 }
-
                 <div className='text-start'>
                     <p className='text-2xl mb-2  font-serif font-semibold'>{user}</p>
                     <p className='text-lg'>{email}</p>
-
-                    
                 </div>
             </div>
             <div className='mt-5'>
@@ -32,14 +29,13 @@ const ReviewCard = ({ singleReview }) => {
                 </h5>
             </div>
 
-
-
             <div className='mt-2'>
                 <Dropdown.Divider />
             </div>
 
             <p className=' text-base my-4'>{review}</p>
             <ReviewRating rating={rating}></ReviewRating>
+            {children}
         </div>
 
     );

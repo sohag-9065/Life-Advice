@@ -1,18 +1,12 @@
 import { Button, Card, Label, Textarea, TextInput } from 'flowbite-react';
-import React, { useContext} from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import Loading from '../../components/Loading';
-import { AuthContext } from '../../Context/UserContext';
 import imageUpload from '../../js/imageUpload';
 
 const AddAService = () => {
     const { register, formState: { errors }, reset, handleSubmit } = useForm();
-    const { user, loadingUser } = useContext(AuthContext);
-
-    if (loadingUser) {
-        return <Loading></Loading>
-    }
+    
 
     const onSubmit = data => {
         const { title, description, rating,  price, courseDetails } = data;
@@ -55,10 +49,10 @@ const AddAService = () => {
                 }
             })
 
-        // reset();
+        reset();
     };
     return (
-        <div className="w-full min-h-screen flex justify-center items-center my-12">
+        <div className="w-full min-h-screen flex justify-center items-center my-4">
             <Card className="max-w-lg  w-full">
                 <h1 className='text-2xl text-center font-semibold'>Course Info</h1>
                 <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
@@ -140,6 +134,8 @@ const AddAService = () => {
                         <TextInput
                             type="number"
                             placeholder="Enter Rating"
+                            min="1" 
+                            max="5"
                             {...register("rating",
                                 {
                                     required: "Course Rating is required",

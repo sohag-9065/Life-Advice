@@ -2,6 +2,7 @@ import { Rating } from 'flowbite-react';
 import React from 'react';
 
 const ReviewRating = ({ rating }) => {
+    // console.log(rating)
     return (
         <Rating>
             {

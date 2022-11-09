@@ -22,7 +22,7 @@ const Header = () => {
 
     return (
 
-        <Navbar fluid={true} rounded={true} >
+        <Navbar fluid={true} rounded={true} className="py-12" >
             <Navbar.Brand href="https://flowbite.com/">
                 <img
                     src={logo}
@@ -88,25 +88,25 @@ const Header = () => {
                 <Navbar.Toggle />
             </div>
             <Navbar.Collapse>
-                <NavLink to="/home" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>
+                <NavLink to="/home" className={({ isActive }) => isActive ? " border-b-2" : undefined}>
                     Home
                 </NavLink>
-                <NavLink to="/services" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>
+                <NavLink to="/services" className={({ isActive }) => isActive ? " border-b-2" : undefined}>
                     Courses
                 </NavLink>
-                <NavLink to="/blog" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>
+                <NavLink to="/blog" className={({ isActive }) => isActive ? " border-b-2" : undefined}>
                     Blog
                 </NavLink>
-                <NavLink to="/faq" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>
+                <NavLink to="/faq" className={({ isActive }) => isActive ? " border-b-2" : undefined}>
                     FAQ
                 </NavLink>
                 {
                     user &&
                     <>
-                        <NavLink to="/my-review" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>
+                        <NavLink to="/my-review" className={({ isActive }) => isActive ? " border-b-2" : undefined}>
                         My reviews
                         </NavLink>
-                        <NavLink to="/add-service" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>
+                        <NavLink to="/add-service" className={({ isActive }) => isActive ? " border-b-2" : undefined}>
                         Add Course
                         </NavLink>
                     </>
