@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { setAuthToken } from '../../accessToken/authToken';
 import Loading from '../../components/Loading';
 import { AuthContext } from '../../Context/UserContext';
 import useTitle from '../../hooks/useTitle';
@@ -28,6 +29,9 @@ const Login = () => {
         // sign in user with email and pass 
         signin(email, password)
             .then(result => {
+                // token generate 
+                const user = result.user;
+                setAuthToken(user);
                 toast.success('Login Success!', { autoClose: 1000 });
                 navigate(from, { replace: true });
             })

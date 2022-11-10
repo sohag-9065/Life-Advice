@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { setAuthToken } from '../../accessToken/authToken';
 import { AuthContext } from '../../Context/UserContext';
 
 const SocialLogin = ({ from }) => {
@@ -10,17 +11,20 @@ const SocialLogin = ({ from }) => {
     // Google Signin
     const handleGoogleSignin = () => {
         signInWithGoogle().then(result => {
+            // token generate 
+            const user = result.user;
+            setAuthToken(user);
             toast.success('Login Success!', { autoClose: 1000 });
             navigate("/home")
         })
     }
 
-    // twiter: https://fun-code-fa88c.firebaseapp.com/__/auth/handler
-    // Barer:  AAAAAAAAAAAAAAAAAAAAAGBtigEAAAAAIwIXShrYCOVrLLvTz4CP1%2BFXReY%3DPsFbgFCdk32AIdfFMy5qE2wPMszlP43JCh2ccOYfNIqo2leBY1
-    // twiter Signin
     const handleTwiterSignin = () => {
         console.log("object");
         signInWithTwitter().then(result => {
+            // token generate 
+            const user = result.user;
+            setAuthToken(user);
             toast.success('Login Success!', { autoClose: 1000 });
             navigate("/home")
         })
@@ -30,6 +34,9 @@ const SocialLogin = ({ from }) => {
     const handleGithubSignin = () => {
         console.log("object");
         signInWithGithub().then(result => {
+            // token generate 
+            const user = result.user;
+            setAuthToken(user);
             toast.success('Login Success!', { autoClose: 1000 });
             navigate("/home")
         })

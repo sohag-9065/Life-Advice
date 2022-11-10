@@ -13,7 +13,11 @@ const DeleteModal = ({ showModal, setShowModal, deleteReview, setDeleteReview, r
         console.log("object");
         setShowModal(false)
         fetch(`http://localhost:5000/reviews/${_id}`, {
-            method: "DELETE"
+            method: "DELETE",
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('life-advice')}`
+            },
         })
             .then(res => res.json())
             .then(data => {

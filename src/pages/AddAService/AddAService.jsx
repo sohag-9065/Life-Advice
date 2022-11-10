@@ -41,7 +41,8 @@ const AddAService = () => {
                     fetch('http://localhost:5000/services', {
                         method: "POST",
                         headers: {
-                            'content-type': 'application/json'
+                            'content-type': 'application/json',
+                            'authorization': `Bearer ${localStorage.getItem('life-advice')}`
                         },
                         body: JSON.stringify(course)
                     })
@@ -65,10 +66,10 @@ const AddAService = () => {
                 }
             })
             .catch(err => {
+                toast.error("Failed to add the Course", { autoClose: 1000 });
                 setIsLoading(false);
             })
 
-        reset();
     };
     return (
         <div className="w-full min-h-screen flex justify-center items-center my-4">

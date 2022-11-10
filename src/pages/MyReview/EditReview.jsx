@@ -22,7 +22,8 @@ const EditReview = ({ editModal, setEditModal, editReview, setEditReview, refetc
         fetch(`http://localhost:5000/reviews/${_id}`, {
             method: 'PATCH',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('life-advice')}`
             },
             body: JSON.stringify(reviewUpdate)
         })

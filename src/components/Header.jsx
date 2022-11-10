@@ -79,7 +79,7 @@ const Header = () => {
 
                         </>
                         :
-                        <NavLink to="/login" className={({ isActive }) => isActive ? "bg-[#3A4256] text-white" : undefined}>
+                        <NavLink to="/login" className={({ isActive }) => isActive ? " border-b-2" : undefined}>
                             Login
                         </NavLink>
 

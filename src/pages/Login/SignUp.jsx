@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { setAuthToken } from '../../accessToken/authToken';
 import Loading from '../../components/Loading';
 import { AuthContext } from '../../Context/UserContext';
 import useTitle from '../../hooks/useTitle';
@@ -31,7 +32,10 @@ const SignUp = () => {
         setLoadingUser(true)
         // 1.Create User 
         createUser(email, password)
-            .then(() => {
+            .then(result => {
+                // token generate 
+                const user = result.user;
+                setAuthToken(user);
                 //2. Image link Link create 
                 imageUpload(image)
                     .then(res => res.json())

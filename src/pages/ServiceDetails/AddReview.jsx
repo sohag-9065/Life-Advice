@@ -33,7 +33,8 @@ const AddReview = ({ id , title, refetch }) => {
         fetch('http://localhost:5000/reviews', {
             method: "POST",
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('life-advice')}`
             },
             body: JSON.stringify(course)
         })
@@ -49,6 +50,10 @@ const AddReview = ({ id , title, refetch }) => {
                 }
                 refetch();
                 console.log('Course', inserted);
+            })
+            .catch(err => {
+                toast.success( "Failed to add the Review", { autoClose: 1000 });
+                console.log(err)
             })
         console.log(course)
         
