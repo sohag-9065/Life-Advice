@@ -3,15 +3,14 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 
 const EditReview = ({ editModal, setEditModal, editReview, setEditReview, refetch }) => {
-    const [updateReview, setUpdateReview] = useState("");
-    const [updateRating, setUpdateRating] = useState("");
-
     const { _id, title, review, rating } = editReview;
-    // console.log("updateReview: ", updateReview);
+    const [updateReview, setUpdateReview] = useState(review);
+    const [updateRating, setUpdateRating] = useState(rating);
 
+    // console.log("editReview: ", editReview);
+    // console.log("review: ", review);
 
     const handleModal = () => {
-        
         setEditModal(false)
         const reviewUpdate = {
              review: updateReview,
@@ -19,7 +18,7 @@ const EditReview = ({ editModal, setEditModal, editReview, setEditReview, refetc
 
         }
         console.log("reviewUpdate", reviewUpdate);
-        fetch(`http://localhost:5000/reviews/${_id}`, {
+        fetch(`https://ph-b6-assignmet11-server-sohag-9065.vercel.app/reviews/${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
@@ -33,32 +32,23 @@ const EditReview = ({ editModal, setEditModal, editReview, setEditReview, refetc
                 if (data?.modifiedCount > 0) {
                     toast.info('Review Update', { autoClose: 1000 })
                 }
+                setEditReview(null)
                 refetch();
                 console.log(data);
             })
-        // fetch(`http://localhost:5000/reviews/${_id}`, {
-        //     method: "DELETE"
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data);
-        //         if (data.deletedCount) {
-        //             //  console.log(data.deletedCount);
-        //             toast.info('Review Delete', { autoClose: 1000 })
-        //             setEditReview(null)
-        //             refetch();
-        //         }
-
-        //     })
     }
 
+    const handleReview = () => {
+        setEditModal(false);
+        setEditReview(null)
+    }
 
     return (
         <div>
             <React.Fragment>
                 <Modal
                     show={editModal}
-                    onClose={() => setEditModal(false)}
+                    onClose={handleReview}
                 >
                     <Modal.Header>
                         {title}

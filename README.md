@@ -3,7 +3,7 @@
 
 
 * live site: [click here](a11-life-advice.web.app/)
-* server link: [click here](https://ph-b6-assignmet10-server.vercel.app/)
+* server link: [click here](https://ph-b6-assignmet11-server-sohag-9065.vercel.app/)
 * client side private repo: [click here](https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-sohag-9065)
 * server side private repo: [click here](https://github.com/Porgramming-Hero-web-course/b6a11-service-review-server-side-sohag-9065)
 

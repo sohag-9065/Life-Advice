@@ -38,7 +38,7 @@ const AddAService = () => {
                         postTime,
                         image: img
                     }
-                    fetch('http://localhost:5000/services', {
+                    fetch('https://ph-b6-assignmet11-server-sohag-9065.vercel.app/services', {
                         method: "POST",
                         headers: {
                             'content-type': 'application/json',

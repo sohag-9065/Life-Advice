@@ -22,7 +22,7 @@ const Header = () => {
 
     return (
 
-        <Navbar fluid={true} rounded={true} className="py-12" >
+        <Navbar fluid={true} rounded={true} className="py-10" >
             <Navbar.Brand href="#">
                 <img
                     src={logo}

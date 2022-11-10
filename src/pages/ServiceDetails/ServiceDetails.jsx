@@ -15,7 +15,7 @@ const ServiceDetails = () => {
     const { _id, title, details, description, image, rating, price } = useLoaderData();
     useTitle("ServiceDetails");
 
-    const { data: reviews, isLoading, refetch } = useQuery('reviews', () => fetch(`http://localhost:5000/reviews/filter?id=${_id}`).then(res => res.json()),);
+    const { data: reviews, isLoading, refetch } = useQuery('reviews', () => fetch(`https://ph-b6-assignmet11-server-sohag-9065.vercel.app/reviews/filter?id=${_id}`).then(res => res.json()),);
 
     if (isLoading || loadingUser) {
         return <Loading></Loading>
@@ -53,7 +53,7 @@ const ServiceDetails = () => {
 
                             </div>
                             <div className='flex justify-between py-4'>
-                                <p ><span className=' py-4 text-xl font-semibold text-secondary'>Price: {price}</span> </p>
+                                <p ><span className=' py-4 text-xl font-semibold text-secondary'>Price: ${price}</span> </p>
                                 <ReviewRating rating={rating}></ReviewRating>
 
                             </div>
@@ -78,6 +78,7 @@ const ServiceDetails = () => {
                 }
                 <div className='grid grid-cols-1 lg:grid-cols-3 justify-items-center'>
                     {
+                        reviews.length > 0 &&
                         reviews.map(review => <ReviewCard
                             key={review._id}
                             singleReview={review}

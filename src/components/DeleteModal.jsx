@@ -12,7 +12,7 @@ const DeleteModal = ({ showModal, setShowModal, deleteReview, setDeleteReview, r
     const handleModal = () => {
         console.log("object");
         setShowModal(false)
-        fetch(`http://localhost:5000/reviews/${_id}`, {
+        fetch(`https://ph-b6-assignmet11-server-sohag-9065.vercel.app/reviews/${_id}`, {
             method: "DELETE",
             headers: {
                 'content-type': 'application/json',

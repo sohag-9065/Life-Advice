@@ -34,7 +34,7 @@ const router = createBrowserRouter([
             {
                 path: "/services/:id",
                 element: <ServiceDetails/>,
-                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+                loader: ({ params }) => fetch(`https://ph-b6-assignmet11-server-sohag-9065.vercel.app/services/${params.id}`)
             },
             {
                 path: "/blog",
@@ -57,7 +57,6 @@ const router = createBrowserRouter([
                     <ProtectRoute>
                         <AddAService />
                     </ProtectRoute>
-
             },
             {
                 path: "/login",

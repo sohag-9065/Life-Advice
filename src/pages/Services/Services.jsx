@@ -15,7 +15,7 @@ const Services = () => {
 
     useEffect(() => {
         satIsLoading(true);
-        fetch(`http://localhost:5000/services?page=${page - 1}&size=${size}`)
+        fetch(`https://ph-b6-assignmet11-server-sohag-9065.vercel.app/services?page=${page - 1}&size=${size}`)
             .then(res => res.json())
             .then(data => {
                 setCount(data.count);
@@ -49,6 +49,7 @@ const Services = () => {
             {/* all services show */}
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 max-w-screen-xl justify-items-center  mt-20'>
                 {
+                    services.length > 0 &&
                     services.map(service => <ServiceCard
                         key={service._id}
                         service={service}

@@ -18,7 +18,7 @@ const MyReview = () => {
     const { user, loadingUser } = useContext(AuthContext);
 
 
-    const { data: reviews, isLoading, refetch } = useQuery('reviews', () => fetch(`http://localhost:5000/reviews/filter?email=${user.email}`).then(res => res.json()),);
+    const { data: reviews, isLoading, refetch } = useQuery('reviews', () => fetch(`https://ph-b6-assignmet11-server-sohag-9065.vercel.app/reviews/filter?email=${user.email}`).then(res => res.json()),);
 
     if (isLoading || loadingUser) {
         return <Loading></Loading>
