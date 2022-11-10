@@ -17,10 +17,13 @@ const AddReview = ({ id , title, refetch }) => {
         e.preventDefault();
         const review = e.target.review.value;
         const rating = e.target.rating.value;
+        const d = new Date();
+        const postTime = d.getTime();
         const course = {
             course_Id: id,
             review,
             rating,
+            postTime,
             user: user.displayName,
             email: user.email,
             photoURL: user.photoURL,

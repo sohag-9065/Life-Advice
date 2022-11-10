@@ -28,11 +28,10 @@ const Services = () => {
     if(isLoading){
         return  <Loading></Loading>
     }
-
+    // console.log(services);
 
     const pages = Math.ceil(count / 3);
     // console.log(services);
-
 
     const onChnagePage = (page) => {
         setPage(page);

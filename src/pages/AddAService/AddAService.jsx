@@ -1,20 +1,29 @@
 import { Button, Card, Label, Textarea, TextInput } from 'flowbite-react';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import Loading from '../../components/Loading';
 import useTitle from '../../hooks/useTitle';
 import imageUpload from '../../js/imageUpload';
 
 const AddAService = () => {
+    const [isLoading, setIsLoading] = useState(false);
     const { register, formState: { errors }, reset, handleSubmit } = useForm();
-    useTitle("Add Course")
-    
+    useTitle("Add Course");
+
+    if(isLoading){
+        return <Loading></Loading>
+    }
+
 
     const onSubmit = data => {
-        const { title, description, rating,  price, courseDetails } = data;
+        const { title, description, rating, price, courseDetails } = data;
         const image = data.image[0];
+        const d = new Date();
+        const postTime = d.getTime();
         const details = courseDetails.split(".");
-        console.log(data)
+        // console.log(data);
+        setIsLoading(true);
         imageUpload(image)
             .then(res => res.json())
             .then(result => {
@@ -22,10 +31,11 @@ const AddAService = () => {
                     const img = result.data.url
                     const course = {
                         title,
-                        description, 
-                        rating,  
+                        description,
+                        rating,
                         price,
                         details,
+                        postTime,
                         image: img
                     }
                     fetch('http://localhost:5000/services', {
@@ -37,18 +47,25 @@ const AddAService = () => {
                     })
                         .then(res => res.json())
                         .then(inserted => {
-                             
+                            setIsLoading(false);
                             if (inserted?.insertedId) {
-                                toast.success("Course added successfully");
+                                toast.success("Course added successfully", { autoClose: 1000 });
                                 reset();
                             }
                             else {
-                                toast.error("Failed to add the Course");
+                                toast.error("Failed to add the Course", { autoClose: 1000 });
                             }
                             console.log('Course', inserted);
                         })
+                        .catch(err => {
+                            setIsLoading(false);
+                            toast.error("Failed to add the Course", { autoClose: 1000 });
+                        })
 
                 }
+            })
+            .catch(err => {
+                setIsLoading(false);
             })
 
         reset();
@@ -136,7 +153,7 @@ const AddAService = () => {
                         <TextInput
                             type="number"
                             placeholder="Enter Rating"
-                            min="1" 
+                            min="1"
                             max="5"
                             {...register("rating",
                                 {

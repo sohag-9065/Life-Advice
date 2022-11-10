@@ -10,7 +10,9 @@ const ServicesHome = () => {
     if (isLoading) {
         return <Loading></Loading>
     }
+    console.log(data);
     const { services } = data;
+
     return (
         <div className='mt-12'>
             <h2 className='text-center text-4xl pt-2'>My Courses</h2>
