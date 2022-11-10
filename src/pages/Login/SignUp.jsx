@@ -1,4 +1,4 @@
-import { Button, Card, Label, TextInput } from 'flowbite-react';
+import { Button, Card, Dropdown, Label, TextInput } from 'flowbite-react';
 import React, { useContext } from 'react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -9,6 +9,7 @@ import Loading from '../../components/Loading';
 import { AuthContext } from '../../Context/UserContext';
 import useTitle from '../../hooks/useTitle';
 import imageUpload from '../../js/imageUpload';
+import SocialLogin from './SocialLogin';
 
 const SignUp = () => {
     const { createUser, updateNameImage, verifyEmail } = useContext(AuthContext);
@@ -165,6 +166,10 @@ const SignUp = () => {
                     </Button>
                 </form>
                 <p className='text-xs'>Already have an account? <Link to="/login" className='text-lime-700 cursor-pointer'>Please Login</Link></p>
+                <div className='mt-1'>
+                    <Dropdown.Divider />
+                </div>
+                <SocialLogin></SocialLogin>
             </Card>
         </div>
     );
